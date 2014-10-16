@@ -11,7 +11,28 @@
 |
 */
 
+use \GuzzleHttp\Client;
+
 Route::get('/', function()
 {
+    $client = new Client();
+    $response = $client->get('https://api.github.com/users/tomgajewski');
+    $response = $response->json();
+
+    dd($response);
+
+//
+//    if ($response->getBody()) {
+//        echo $response->getBody();
+//        // JSON string: { ... }
+//    }
+
+    dd($response->getBody());
+
+//    $response = $client->get('http://api.github.com/users/tomgajewski');
+
+//    dd($response->getBody());
+
+
 	return View::make('hello');
 });
